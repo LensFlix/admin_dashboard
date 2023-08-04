@@ -17,4 +17,11 @@ const autheticate = gql`
   }
 `;
 
-export { autheticate, challenge };
+const getDefaultProfileId = gql`
+  query DefaultProfile($request: DefaultProfileRequest!) {
+    defaultProfile(request: $request) {
+      id
+    }
+  }
+`;
+export { autheticate, challenge, getDefaultProfileId };

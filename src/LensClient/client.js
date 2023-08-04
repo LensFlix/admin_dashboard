@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-const API_URL = "https://api.lens.dev";
+const API_URL = import.meta.env.VITE_LENS_TESTNET;
 
 /* create the API client */
 export const client = new ApolloClient({
