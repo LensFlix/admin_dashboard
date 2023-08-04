@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useMoralis } from "react-moralis";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileId } from "../Helper/getProfileId";
+import switchChain from "../Helper/switchChain";
 import { client } from "../LensClient/client";
 import { autheticate, challenge } from "../LensClient/queries";
 const Navbar = () => {
@@ -57,7 +58,7 @@ const Navbar = () => {
     }
     if (account) {
       getProfileId(account, dispatch);
-
+      switchChain();
       dispatch({ type: "SET_ADDRESS", payload: account });
       if (address != account) {
         signIn();
