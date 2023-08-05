@@ -77,13 +77,12 @@ const Navbar = () => {
       justify="space-between"
       bg="black"
       color="white"
-      padding="1rem"
+      px={10}
     >
-      <Text fontSize="xl" color="red.500" fontWeight="bold">
+      <Text fontSize={"3rem"} color="red.500" fontWeight="bold">
         LensFlix
       </Text>
       <ConnectButton moralisAuth={false} />
-      <Text>{profileId}</Text>
     </Flex>
   );
 };
