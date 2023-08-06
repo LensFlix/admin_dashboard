@@ -19,7 +19,7 @@ export const Balance = () => {
           getBalance(dispatch);
         }}
       >
-        Load Balance
+        Fetch Balance
       </Button>
     </>
   );
