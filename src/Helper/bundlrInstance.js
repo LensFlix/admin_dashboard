@@ -2,6 +2,7 @@ import { WebBundlr } from "@bundlr-network/client";
 import { providers } from "ethers";
 
 export default async function bundlrInstance() {
+  await window.ethereum.enable();
   const provider = new providers.Web3Provider(window.ethereum);
   await provider._ready();
   const client = new WebBundlr(
