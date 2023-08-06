@@ -67,6 +67,7 @@ const Navbar = () => {
     }
     if (!account) {
       dispatch({ type: "SET_PROFILE_ID", payload: null });
+      dispatch({ type: "SET_HANDLE", payload: null });
     }
   }, [account]);
 
@@ -79,7 +80,7 @@ const Navbar = () => {
       color="white"
       px={10}
     >
-      <Text fontSize={"3rem"} color="red.500" fontWeight="bold">
+      <Text fontSize={"3rem"} color="red" fontWeight="bold">
         LensFlix
       </Text>
       <ConnectButton moralisAuth={false} />

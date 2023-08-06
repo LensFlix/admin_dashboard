@@ -9,10 +9,15 @@ export async function getProfileId(address, dispatch) {
       },
     },
   });
+  console.log(profileId);
   if (profileId.data.defaultProfile) {
     dispatch({
       type: "SET_PROFILE_ID",
       payload: profileId.data.defaultProfile.id,
+    });
+    dispatch({
+      type: "SET_HANDLE",
+      payload: profileId.data.defaultProfile.handle.split(".")[0],
     });
   }
 }

@@ -21,6 +21,7 @@ const getDefaultProfileId = gql`
   query DefaultProfile($request: DefaultProfileRequest!) {
     defaultProfile(request: $request) {
       id
+      handle
     }
   }
 `;

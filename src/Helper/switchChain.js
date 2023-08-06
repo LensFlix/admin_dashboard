@@ -3,7 +3,6 @@ import { ethers } from "ethers";
 export default async function switchChain() {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const chainId = await provider.getNetwork();
-  console.log(chainId);
   if (chainId != import.meta.VITE_TEST_CHAINID) {
     window.ethereum.request({
       method: "wallet_addEthereumChain",
