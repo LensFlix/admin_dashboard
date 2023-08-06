@@ -78,9 +78,14 @@ const Navbar = () => {
       justify="space-between"
       bg="black"
       color="white"
-      px={10}
+      px={{ base: "1", sm: "4", md: "8" }}
+      py={1}
     >
-      <Text fontSize={"3rem"} color="red" fontWeight="bold">
+      <Text
+        fontSize={{ base: "2rem", sm: "2.5rem", md: "3rem" }}
+        color="red"
+        fontWeight="bold"
+      >
         LensFlix
       </Text>
       <ConnectButton moralisAuth={false} />

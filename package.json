@@ -26,7 +26,9 @@
     "react-dom": "^18.2.0",
     "react-moralis": "^1.4.2",
     "react-redux": "^8.1.2",
-    "redux": "^4.2.1"
+    "redux": "^4.2.1",
+    "vite-plugin-node-polyfills": "^0.9.0",
+    "vite-plugin-svgr": "^3.2.0"
   },
   "devDependencies": {
     "@rollup/plugin-inject": "^5.0.3",

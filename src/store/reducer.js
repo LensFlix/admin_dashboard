@@ -3,10 +3,10 @@ const initialState = {
   accessToken: null,
   profileId: null,
   handle: null,
+  balance: null,
 };
 
 export default function reducer(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case "SET_ADDRESS":
       return { ...state, address: action.payload };
@@ -21,6 +21,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         handle: action.payload,
+      };
+    case "SET_BALANCE":
+      return {
+        ...state,
+        balance: action.payload,
       };
     default:
       return state;
