@@ -73,14 +73,7 @@ const Navbar = () => {
   }, [account]);
 
   return (
-    <Flex
-      as="nav"
-      align="center"
-      justify="space-around"
-      bg="black"
-      // color="white"
-      py={1}
-    >
+    <Flex as="nav" align="center" justify="space-around" bg="black" py={1}>
       <Text
         fontSize={{ base: "2rem", sm: "2.5rem", md: "3rem" }}
         color="red"
