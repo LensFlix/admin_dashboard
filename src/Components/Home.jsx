@@ -13,7 +13,7 @@ const Home = () => {
   const [id, setId] = useState("");
   const handle = useSelector((state) => state.handle);
   const profileId = useSelector((state) => state.profileId);
-  const account = useMoralis();
+  const { account } = useMoralis();
   const Initialtags = [
     { name: "Content-Type", value: "video/mp4" },
     { name: "app-name", value: "LensFlix" },
@@ -40,7 +40,7 @@ const Home = () => {
     setId(data.id);
     return data.id;
   }
-
+  console.log(account);
   async function upload() {
     if (licenseType !== null) {
       if (!licenseFeeUnit || licenseFeeUnit === 0) {
@@ -54,14 +54,14 @@ const Home = () => {
         ...licenseType,
         value: licenseType.value + "_" + licenseFeeUnit,
       });
-
+    if (category !== null) tags.push(category);
     if (commercialUse !== null) tags.push(commercialUse);
     if (currency !== null) tags.push(currency);
     if (paymentAddress) tags.push(paymentAddress);
     if (derivation) tags.push(derivation);
 
     console.log(tags);
-    const transactionId = await getTransactionId(tags);
+    // const transactionId = await getTransactionId(tags);
   }
   return (
     <>
@@ -71,26 +71,38 @@ const Home = () => {
             fontSize={{ base: "2rem", sm: "2.5rem", md: "3rem" }}
             fontStyle={"italic"}
             fontWeight={"bold"}
-            color={"red"}
+            color={"rgb(170,253,37)"}
             textAlign={"center"}
+            py={4}
           >
             {handle ? `Welcome ${handle}` : null}
           </Text>
           <Flex
-            p={5}
+            p={{ md: 5 }}
             h={"content"}
             direction={{ base: "column", md: "row" }}
             justify={{ md: "space-around" }}
             align={{ md: "top" }}
+            maxWidth={"1200px"}
+            m={"auto"}
           >
-            <Flex direction={"column"} align={"center"} gap={2}>
+            <Flex
+              direction={"column"}
+              align={"center"}
+              gap={2}
+              w={{ md: "50%" }}
+              border={{ md: "1px solid white" }}
+              borderRadius={9}
+              p={5}
+            >
               <Text
-                fontSize={{ base: "1.5rem", sm: "2rem" }}
+                fontSize={{ base: "1rem", md: "1rem", lg: "1.3rem" }}
                 fontStyle={"italic"}
                 fontWeight={"bold"}
-                color={"red"}
+                color={"green.400"}
+                py={2}
               >
-                Upload Content
+                Upload Your Content to Lens And Arweave
               </Text>
               <Input
                 type="file"
@@ -255,15 +267,20 @@ const Home = () => {
                 Upload
               </Button>
             </Flex>
-            <Flex direction={"column"} align={"center"} mt={5} gap={4}>
+            <Flex
+              direction={"column"}
+              align={"center"}
+              gap={6}
+              w={{ md: "40%" }}
+            >
               <Fund />
               <Balance />
             </Flex>
           </Flex>
         </Box>
-      ) : !profileId && window.onloadeddata ? (
+      ) : !profileId && account ? (
         <NoProfile />
-      ) : account ? (
+      ) : !account ? (
         <ConnectWallet />
       ) : null}
     </>

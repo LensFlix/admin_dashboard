@@ -16,7 +16,8 @@ export async function getProfileId(address, dispatch) {
     });
     dispatch({
       type: "SET_HANDLE",
-      payload: profileId.data.defaultProfile.handle.split(".")[0],
+      payload: profileId.data.defaultProfile.handle,
+      // payload: profileId.data.defaultProfile.handle.split(".")[0],
     });
   }
 }

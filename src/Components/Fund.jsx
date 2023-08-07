@@ -7,7 +7,7 @@ const Fund = () => {
   const [amount, setAmount] = useState();
   const dispatch = useDispatch();
   return (
-    <Flex gap={3}>
+    <Flex gap={3} border={"1px solid white"} borderRadius={9} p={6}>
       <Input
         type="text"
         placeholder="Enter Amount to Fund"
@@ -20,7 +20,7 @@ const Fund = () => {
         color="white"
       />
       <Button
-        colorScheme="red"
+        colorScheme="green"
         fontWeight={"bold"}
         fontSize={"1rem"}
         onClick={() => fundBundlr(amount, dispatch)}
