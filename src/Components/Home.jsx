@@ -85,18 +85,18 @@ const Home = () => {
         title: "Success",
         description: "Content uploaded successfully on Arweave Network",
         status: "success",
-        duration: 2000,
+        duration: 3000,
         isClosable: true,
         position: "top",
       });
 
       setTimeout(() => {
         toast({
-          title: "warning toast",
+          title: "waiting",
           description:
             "Approve transaction to upload content to your lens profile",
           status: "warning",
-          duration: 2000,
+          duration: 3000,
           isClosable: true,
           position: "top",
         });
@@ -126,7 +126,7 @@ const Home = () => {
           title: "Success",
           description: "Content uploaded successfully on your lens profile",
           status: "success",
-          duration: 2000,
+          duration: 3000,
           isClosable: true,
           position: "top",
         });
@@ -362,9 +362,6 @@ const Home = () => {
       ) : !account ? (
         <ConnectWallet />
       ) : null}
-
-
-
     </>
   );
 };
