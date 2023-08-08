@@ -64,22 +64,42 @@ const Home = () => {
         return;
       }
     }
-    const tags = [...Initialtags];
-    if (licenseType !== null)
-      tags.push({
-        ...licenseType,
-        value: licenseType.value + "_" + licenseFeeUnit,
-      });
-    if (category !== null) tags.push(category);
-    if (commercialUse !== null) tags.push(commercialUse);
-    if (currency !== null) tags.push(currency);
-    if (paymentAddress) tags.push(paymentAddress);
-    if (derivation) tags.push(derivation);
-
-    console.log(tags);
-    const transactionId = await getTransactionId(tags);
-
     try {
+      const tags = [...Initialtags];
+      if (licenseType !== null)
+        tags.push({
+          ...licenseType,
+          value: licenseType.value + "_" + licenseFeeUnit,
+        });
+      if (category !== null) tags.push(category);
+      if (commercialUse !== null) tags.push(commercialUse);
+      if (currency !== null) tags.push(currency);
+      if (paymentAddress) tags.push(paymentAddress);
+      if (derivation) tags.push(derivation);
+
+      console.log(tags);
+      const transactionId = await getTransactionId(tags);
+
+      toast({
+        title: "Success",
+        description: "Content uploaded successfully on Arweave Network",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+        position: "top",
+      });
+
+      setTimeout(() => {
+        toast({
+          title: "warning toast",
+          description:
+            "Approve transaction to upload content to your lens profile",
+          status: "warning",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+      }, 1000);
       const transactionParameters = [
         profileId,
         `https://arweave.net/${transactionId}`,
@@ -97,16 +117,26 @@ const Home = () => {
           vars: transactionParameters,
         },
       };
-      await runContractFunction({
+      let { hash } = await runContractFunction({
         params: transactionOptions,
       });
-      toast({
-        title: "Success",
-        description: "Content uploaded successfully on your lens profile",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-      });
+      if (hash) {
+        toast({
+          title: "Success",
+          description: "Content uploaded successfully on your lens profile",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
+        toast({
+          title: "Transaction Hash",
+          description: hash,
+          variant: "solid",
+          isClosable: true,
+          position: "top",
+        });
+      }
     } catch (error) {
       console.log(error);
     }
