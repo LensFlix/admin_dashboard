@@ -8,6 +8,9 @@ import { Balance } from "./Balance";
 import ConnectWallet from "./ConnectWallet";
 import Fund from "./Fund";
 import NoProfile from "./NoProfile";
+import ContentDisplay from './ContentDisplay';
+import PaymentIntegration from './PaymentIntegration';
+
 const Home = () => {
   const [video, setVideo] = useState();
   const [id, setId] = useState("");
@@ -283,6 +286,12 @@ const Home = () => {
       ) : !account ? (
         <ConnectWallet />
       ) : null}
+
+      {account && <ContentDisplay transactionId={id} />}
+      
+      {account && <PaymentIntegration transactionId={id} />}
+
+
     </>
   );
 };
