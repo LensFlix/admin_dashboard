@@ -333,9 +333,6 @@ const Home = () => {
         <ConnectWallet />
       ) : null}
 
-      {account && <ContentDisplay transactionId={id} />}
-      
-      {account && <PaymentIntegration transactionId={id} />}
 
 
     </>
