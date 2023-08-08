@@ -23,7 +23,10 @@ const Fund = () => {
         colorScheme="green"
         fontWeight={"bold"}
         fontSize={"1rem"}
-        onClick={() => fundBundlr(amount, dispatch)}
+        onClick={() => {
+          fundBundlr(amount, dispatch);
+          setAmount("");
+        }}
       >
         Fund
       </Button>

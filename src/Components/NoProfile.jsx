@@ -13,7 +13,9 @@ const NoProfile = () => {
       <Text fontSize={"2rem"} color={"red"} fontWeight={"bold"}>
         No Profile Found in your wallet
       </Text>
-      <Link href="https://lens.xyz">Get your profile here!</Link>
+      <Link href="https://lens.xyz" color={"blue"}>
+        Get your profile here!
+      </Link>
     </Flex>
   );
 };

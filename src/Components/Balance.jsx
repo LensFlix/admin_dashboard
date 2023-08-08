@@ -12,11 +12,11 @@ export const Balance = () => {
       border={"1px solid white"}
       borderRadius={9}
       p={4}
-      px={16}
+      px={{ base: 16, md: 10, lg: 16 }}
       gap={5}
     >
-      <Text fontWeight="bold" fontSize="2xl" color="green.400">
-        {balance ? ` Balance ${balance} MATIC` : null}
+      <Text fontWeight="bold" fontSize="1.2rem" color="green.400" p={0}>
+        {balance ? ` Balance ${parseFloat(balance).toFixed(6)} MATIC` : null}
       </Text>
       <Button
         colorScheme="red"
