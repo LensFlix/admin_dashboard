@@ -17,6 +17,7 @@ import { Balance } from "./Balance";
 import ConnectWallet from "./ConnectWallet";
 import Fund from "./Fund";
 import NoProfile from "./NoProfile";
+
 const Home = () => {
   const toast = useToast();
   const [video, setVideo] = useState();
@@ -361,6 +362,9 @@ const Home = () => {
       ) : !account ? (
         <ConnectWallet />
       ) : null}
+
+
+
     </>
   );
 };
