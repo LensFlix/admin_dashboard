@@ -81,26 +81,40 @@ const Home = () => {
       console.log(tags);
       const transactionId = await getTransactionId(tags);
 
-      toast({
-        title: "Success",
-        description: "Content uploaded successfully on Arweave Network",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-        position: "top",
-      });
-
-      setTimeout(() => {
+      if (transactionId) {
         toast({
-          title: "waiting",
-          description:
-            "Approve transaction to upload content to your lens profile",
-          status: "warning",
+          title: "Success",
+          description: "Content uploaded successfully on Arweave Network",
+          status: "success",
           duration: 3000,
           isClosable: true,
           position: "top",
         });
-      }, 1000);
+
+        setTimeout(() => {
+          toast({
+            title: "waiting",
+            description:
+              "Approve transaction to upload content to your lens profile",
+            status: "warning",
+            duration: 3000,
+            isClosable: true,
+            position: "top",
+          });
+        }, 1000);
+      }
+      if (!transactionId) {
+        toast({
+          title: "Error",
+          description: "Transaction Failed",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+        return;
+      }
+
       const transactionParameters = [
         profileId,
         `https://arweave.net/${transactionId}`,
